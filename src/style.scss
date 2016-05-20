@@ -1,0 +1,64 @@
+$color-link: #337ab7;
+
+.dkui-pagination {
+  overflow: hidden;
+  border-left: 1px solid #ccc;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  &-simple {
+
+  }
+
+  &-range {
+
+  }
+
+  &-item {
+    border: 1px solid #ccc;
+    float: left;
+    min-width: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-left: 0;
+    color: $color-link;
+    cursor: pointer;
+
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    &_disabled {
+      background: #eee;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    &_label {
+      min-width: 60px;
+      background: $color-link;
+      color: #fff;
+      border-color: $color-link
+    }
+
+    &_active {
+      background: $color-link;
+      color: #fff;
+      border-color: $color-link;
+    }
+
+    &_ellipsis {
+      color: #bbb;
+      cursor: not-allowed;
+    }
+  }
+
+  &-prev {
+
+  }
+
+  &-next {
+
+  }
+}
