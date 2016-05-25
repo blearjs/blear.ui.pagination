@@ -1,9 +1,9 @@
-<div class="dkui-pagination">
-    <div class="dkui-pagination-item dkui-pagination-item_prev"
-         @class="dkui-pagination-item_disabled: options.page == 1"
+<div class="blearui-pagination">
+    <div class="blearui-pagination-item blearui-pagination-item_prev"
+         @class="blearui-pagination-item_disabled: options.page == 1"
          @click="onPrev">{{options.prev}}</div>
-    <div class="dkui-pagination-item dkui-pagination-item_label">{{options.page}}/{{options.total}}</div>
-    <div class="dkui-pagination-item dkui-pagination-item_next"
-         @class="dkui-pagination-item_disabled: options.page == options.total"
+    <div class="blearui-pagination-item blearui-pagination-item_label">{{options.page}}/{{options.total}}</div>
+    <div class="blearui-pagination-item blearui-pagination-item_next"
+         @class="blearui-pagination-item_disabled: options.page == options.total"
          @click="onNext">{{options.next}}</div>
 </div>

@@ -1,13 +1,13 @@
-<div class="dkui-pagination">
-    <div class="dkui-pagination-item dkui-pagination-item_prev"
-         @class="dkui-pagination-item_disabled: options.page == 1"
+<div class="blearui-pagination">
+    <div class="blearui-pagination-item blearui-pagination-item_prev"
+         @class="blearui-pagination-item_disabled: options.page == 1"
          @click="onPrev">{{options.prev}}</div>
 
 <!--总数 <= 范围-->
 {{#if options.total <= options.range}}
 {{#for item in range(1, options.total)}}
-    <div class="dkui-pagination-item"
-         @class="dkui-pagination-item_active: options.page == item" @click="onPage(item)">{{item}}</div>
+    <div class="blearui-pagination-item"
+         @class="blearui-pagination-item_active: options.page == item" @click="onPage(item)">{{item}}</div>
 {{/for}}
 
 <!--总数 > 范围-->
@@ -47,44 +47,44 @@
         {{/if}}
 
         {{#for item in range(1, rangeLeftMax)}}
-        <div class="dkui-pagination-item"
-             @class="dkui-pagination-item_active: item == options.page"
+        <div class="blearui-pagination-item"
+             @class="blearui-pagination-item_active: item == options.page"
              @click="onPage(item)">{{item}}</div>
         {{/for}}
 
-        <div class="dkui-pagination-item dkui-pagination-item_ellipsis">{{options.ellipsis}}</div>
+        <div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>
 
         {{#for item in range(rangeRightMin, options.total)}}
-        <div class="dkui-pagination-item"
-             @class="dkui-pagination-item_active: item == options.page"
+        <div class="blearui-pagination-item"
+             @class="blearui-pagination-item_active: item == options.page"
              @click="onPage(item)">{{item}}</div>
         {{/for}}
 
     {{#else}}
         {{#for item in range(1, rangeSlice)}}
-            <div class="dkui-pagination-item" @click="onPage(item)">{{item}}</div>
+            <div class="blearui-pagination-item" @click="onPage(item)">{{item}}</div>
         {{/for}}
 
-        <div class="dkui-pagination-item dkui-pagination-item_ellipsis">{{options.ellipsis}}</div>
+        <div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>
 
         {{#set centerMin = options.page - rangeSliceLeftLength}}
         {{#set centerMax = options.page + rangeSliceRightLength}}
         {{#for item in range(centerMin, centerMax)}}
-            <div class="dkui-pagination-item"
-                 @class="dkui-pagination-item_active: item == options.page"
+            <div class="blearui-pagination-item"
+                 @class="blearui-pagination-item_active: item == options.page"
                  @click="onPage(item)">{{item}}</div>
         {{/for}}
 
-        <div class="dkui-pagination-item dkui-pagination-item_ellipsis">{{options.ellipsis}}</div>
+        <div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>
 
         {{#for item in range(options.total - rangeSlice + 1, options.total)}}
-            <div class="dkui-pagination-item" @click="onPage(item)">{{item}}</div>
+            <div class="blearui-pagination-item" @click="onPage(item)">{{item}}</div>
         {{/for}}
 
     {{/if}}
 {{/if}}
 
-    <div class="dkui-pagination-item dkui-pagination-item_next"
-         @class="dkui-pagination-item_disabled: options.page == options.total"
+    <div class="blearui-pagination-item blearui-pagination-item_next"
+         @class="blearui-pagination-item_disabled: options.page == options.total"
          @click="onNext">{{options.next}}</div>
 </div>
