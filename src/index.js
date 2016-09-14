@@ -12,6 +12,7 @@
 var UI =             require('blear.ui');
 var object =         require('blear.utils.object');
 var array =          require('blear.utils.array');
+var time =           require('blear.utils.time');
 var ViewModel =      require('blear.classes.view-model');
 var selector =       require('blear.core.selector');
 var simpleTemplate = require('./simple.html', 'html');
@@ -76,6 +77,10 @@ var Pagination = UI.extend({
                 the[_initSimpleMode]();
                 break;
         }
+
+        time.nextTick(function () {
+            the[_pageChange]();
+        });
     }
 });
 var pro = Pagination.prototype;

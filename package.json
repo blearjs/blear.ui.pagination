@@ -1,6 +1,6 @@
 {
   "name": "blear.ui.pagination",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "分页器 UI",
   "scripts": {
     "live": "browser-sync start --config bs-config.js"
@@ -39,6 +39,7 @@
     "blear.ui": "1.x",
     "blear.utils.object": "1.x",
     "blear.utils.array": "1.x",
+    "blear.utils.time": "1.x",
     "blear.classes.view-model": "1.x",
     "blear.core.selector": "1.x"
   },
