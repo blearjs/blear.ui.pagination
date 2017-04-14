@@ -9,14 +9,14 @@
 
 'use strict';
 
-var UI =             require('blear.ui');
-var object =         require('blear.utils.object');
-var array =          require('blear.utils.array');
-var time =           require('blear.utils.time');
-var ViewModel =      require('blear.classes.view-model');
-var selector =       require('blear.core.selector');
+var UI = require('blear.ui');
+var object = require('blear.utils.object');
+var array = require('blear.utils.array');
+var time = require('blear.utils.time');
+var MVVM = require('blear.classes.mvvm');
+var selector = require('blear.core.selector');
 var simpleTemplate = require('./simple.html', 'html');
-var rangeTemplate =  require('./range.html', 'html');
+var rangeTemplate = require('./range.html', 'html');
 
 var defaults = {
     /**
@@ -65,7 +65,16 @@ var defaults = {
      * 省略页文本
      * @type String
      */
-    ellipsis: '...'
+    ellipsis: '...',
+
+    /**
+     * 页面改变之后处理
+     * @param page {Number} 分页值
+     * @param next {Function} 处理完回调
+     */
+    onChange: function (page, next) {
+        next();
+    }
 };
 var Pagination = UI.extend({
     className: 'Pagination',
@@ -95,14 +104,15 @@ var Pagination = UI.extend({
     }
 });
 var pro = Pagination.prototype;
-var _options = Pagination.sole();
-var _containerEl = Pagination.sole();
-var _initSimpleMode = Pagination.sole();
-var _simpleVM = Pagination.sole();
-var _initRangeMode = Pagination.sole();
-var _rangeVM = Pagination.sole();
-var _processing = Pagination.sole();
-var _pageChange = Pagination.sole();
+var sole = Pagination.sole;
+var _options = sole();
+var _containerEl = sole();
+var _initSimpleMode = sole();
+var _simpleVM = sole();
+var _initRangeMode = sole();
+var _rangeVM = sole();
+var _processing = sole();
+var _pageChange = sole();
 
 
 /**
@@ -112,9 +122,9 @@ pro[_initSimpleMode] = function () {
     var the = this;
     var options = the[_options];
 
-    the[_simpleVM] = new ViewModel({
+    the[_containerEl].innerHTML = simpleTemplate;
+    the[_simpleVM] = new MVVM({
         el: the[_containerEl],
-        template: simpleTemplate,
         data: {
             options: options
         },

@@ -1,4 +1,4 @@
-$color-link: #337ab7;
+$link-color: #337ab7;
 
 .blearui-pagination {
   display: inline-block;
@@ -22,7 +22,7 @@ $color-link: #337ab7;
     line-height: 34px;
     text-align: center;
     border-left: 0;
-    color: $color-link;
+    color: $link-color;
     cursor: pointer;
 
     &:last-child {
@@ -38,15 +38,15 @@ $color-link: #337ab7;
 
     &_label {
       min-width: 60px;
-      background: $color-link;
+      background: $link-color;
       color: #fff;
-      border-color: $color-link
+      border-color: $link-color
     }
 
     &_active {
-      background: $color-link;
+      background: $link-color;
       color: #fff;
-      border-color: $color-link;
+      border-color: $link-color;
     }
 
     &_ellipsis {

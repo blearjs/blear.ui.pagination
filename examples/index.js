@@ -20,15 +20,15 @@ new Pagination({
     });
 });
 
-new Pagination({
-    el: '#range',
-    mode: 'range',
-    total: 20,
-    page: 3
-}).on('change', function (page, calback) {
-    calback({
-        page: page
-    });
-});
+// new Pagination({
+//     el: '#range',
+//     mode: 'range',
+//     total: 20,
+//     page: 3
+// }).on('change', function (page, calback) {
+//     calback({
+//         page: page
+//     });
+// });
 
 
