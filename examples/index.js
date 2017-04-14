@@ -41,7 +41,14 @@ new Pagination({
     el: '#range-4',
     mode: 'range',
     total: 15,
-    page: 3
+    page: 3,
+    onPage: function (page, next) {
+        setTimeout(function () {
+            next({
+                page: page
+            });
+        }, 300);
+    }
 });
 
 

@@ -36,7 +36,11 @@
   },
   "dependencies": {
     "blear.classes.mvvm": "^1.0.9",
+    "blear.classes.template": "^1.0.35",
+    "blear.core.attribute": "^1.0.11",
+    "blear.core.event": "^1.0.5",
     "blear.core.selector": "1.x",
+    "blear.shims.morphdom": "^1.2.0",
     "blear.ui": "1.x",
     "blear.utils.array": "1.x",
     "blear.utils.object": "1.x",

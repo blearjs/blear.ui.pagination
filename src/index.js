@@ -14,10 +14,18 @@ var object = require('blear.utils.object');
 var array = require('blear.utils.array');
 var time = require('blear.utils.time');
 var MVVM = require('blear.classes.mvvm');
+var Template = require('blear.classes.template');
 var selector = require('blear.core.selector');
+var event = require('blear.core.event');
+var attribute = require('blear.core.attribute');
+var morphdom = require('blear.shims.morphdom');
+
 var simpleTemplate = require('./simple.html');
 var rangeTemplate = require('./range.html');
 
+var simpleTpl = new Template(simpleTemplate);
+var rangeTpl = new Template(rangeTemplate);
+var namespace = 'blearui-pagination';
 var defaults = {
     /**
      * 容器，如果容器不为空，则以容器的 html 作为分页模板
@@ -115,6 +123,7 @@ var _initRangeMode = sole();
 var _rangeVM = sole();
 var _processing = sole();
 var _pageChange = sole();
+var _processSimple = sole();
 var _processRange = sole();
 
 
@@ -125,32 +134,26 @@ pro[_initSimpleMode] = function () {
     var the = this;
     var options = the[_options];
 
-    the[_containerEl].innerHTML = simpleTemplate;
-    the[_simpleVM] = new MVVM({
-        el: the[_containerEl],
-        data: {
-            options: options
-        },
-        methods: {
-            onPrev: function () {
-                if (the[_processing] || options.page <= 1) {
-                    return;
-                }
+    the[_processSimple]();
 
-                the[_processing] = true;
-                options.page--;
-                the[_pageChange]();
-            },
-            onNext: function () {
-                if (the[_processing] || options.page >= options.total) {
-                    return;
-                }
-
-                the[_processing] = true;
-                options.page++;
-                the[_pageChange]();
-            }
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_prev', function () {
+        if (the[_processing] || options.page <= 1) {
+            return;
         }
+
+        the[_processing] = true;
+        options.page--;
+        the[_pageChange]();
+    });
+
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
+        if (the[_processing] || options.page >= options.total) {
+            return;
+        }
+
+        the[_processing] = true;
+        options.page++;
+        the[_pageChange]();
     });
 };
 
@@ -162,40 +165,36 @@ pro[_initRangeMode] = function () {
     var the = this;
     var options = the[_options];
 
-    the[_containerEl].innerHTML = rangeTemplate;
-    the[_rangeData].options = options;
-    the[_rangeVM] = new MVVM({
-        el: the[_containerEl],
-        data: the[_rangeData],
-        methods: {
-            onPrev: function () {
-                if (the[_processing] || options.page <= 1) {
-                    return;
-                }
+    the[_processRange]();
 
-                the[_processing] = true;
-                options.page--;
-                the[_pageChange]();
-            },
-            onNext: function () {
-                if (the[_processing] || options.page >= options.total) {
-                    return;
-                }
-
-                the[_processing] = true;
-                options.page++;
-                the[_pageChange]();
-            },
-            onPage: function (item) {
-                if (item.type === 1) {
-                    return;
-                }
-
-                the[_processing] = true;
-                options.page = Number(item.text);
-                the[_pageChange]();
-            }
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_prev', function () {
+        if (the[_processing] || options.page <= 1) {
+            return;
         }
+
+        the[_processing] = true;
+        options.page--;
+        the[_pageChange]();
+    });
+
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
+        if (the[_processing] || options.page >= options.total) {
+            return;
+        }
+
+        the[_processing] = true;
+        options.page++;
+        the[_pageChange]();
+    });
+
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_number', function () {
+        if (the[_processing]) {
+            return;
+        }
+
+        the[_processing] = true;
+        options.page = Number(attribute.text(this));
+        the[_pageChange]();
     });
 };
 
@@ -212,6 +211,8 @@ pro[_pageChange] = function () {
 
         if (options.mode === 'range') {
             the[_processRange]();
+        } else {
+            the[_processSimple]();
         }
 
         the[_processing] = false;
@@ -221,15 +222,28 @@ pro[_pageChange] = function () {
 };
 
 
+/**
+ * 处理简单模式
+ */
+pro[_processSimple] = function () {
+    var the = this;
+
+    the[_containerEl].innerHTML = simpleTpl.render({
+        options: the[_options]
+    });
+};
+
+/**
+ * 处理范围模式
+ */
 pro[_processRange] = function () {
     var the = this;
     var options = the[_options];
-    var pageData = the[_rangeData];
     var total = options.total;
     var range = options.range;
     var page = options.page;
     var ellipsis = options.ellipsis;
-    var canRange = pageData.canRange = total > range;
+    var canRange = total > range;
     var rangeList = [];
     var pushRangeList = function (start, end) {
         var list;
@@ -302,7 +316,10 @@ pro[_processRange] = function () {
         pushRangeList(1, total);
     }
 
-    the[_rangeData].list = rangeList;
+    the[_containerEl].innerHTML = rangeTpl.render({
+        list: rangeList,
+        options: options
+    });
 };
 
 

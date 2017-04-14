@@ -1,19 +1,15 @@
 <div class="blearui-pagination">
     <div class="blearui-pagination-item blearui-pagination-item_prev"
-         :class="{blearui-pagination-item_disabled: options.page == 1}"
-         @click="onPrev">{{options.prev}}</div>
+         @class="blearui-pagination-item_disabled: options.page == 1">{{options.prev}}</div>
 
-<!--总数 <= 范围-->
     <div class="blearui-pagination-item"
          @for="item in list"
-         :class="{
+         @class="
             blearui-pagination-item_active: options.page == item.text,
             blearui-pagination-item_ellipsis: item.type == 1,
             blearui-pagination-item_number: item.type == 2
-         }"
-         @click="onPage(item)">{{item.text}}</div>
+         ">{{item.text}}</div>
 
     <div class="blearui-pagination-item blearui-pagination-item_next"
-         :class="{blearui-pagination-item_disabled: options.page == options.total}"
-         @click="onNext">{{options.next}}</div>
+         @class="blearui-pagination-item_disabled: options.page == options.total">{{options.next}}</div>
 </div>
