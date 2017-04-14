@@ -49,11 +49,22 @@ var defaults = {
      */
     page: 1,
 
-
+    /**
+     * 前一页文本
+     * @type String
+     */
     prev: '≪',
 
+    /**
+     * 后一页文本
+     * @type String
+     */
     next: '≫',
 
+    /**
+     * 省略页文本
+     * @type String
+     */
     ellipsis: '...'
 };
 var Pagination = UI.extend({
