@@ -13,12 +13,10 @@ var UI = require('blear.ui');
 var object = require('blear.utils.object');
 var array = require('blear.utils.array');
 var time = require('blear.utils.time');
-var MVVM = require('blear.classes.mvvm');
 var Template = require('blear.classes.template');
 var selector = require('blear.core.selector');
 var event = require('blear.core.event');
 var attribute = require('blear.core.attribute');
-var morphdom = require('blear.shims.morphdom');
 
 var simpleTemplate = require('./simple.html');
 var rangeTemplate = require('./range.html');
@@ -92,6 +90,9 @@ var Pagination = UI.extend({
         Pagination.parent(the);
         options = the[_options] = object.assign(true, {}, defaults, options);
         the[_containerEl] = selector.query(options.el)[0];
+        // var divEl = modification.create('div');
+        // modification.insert(divEl, the[_containerEl]);
+        // the[_containerEl] = divEl;
         the[_processing] = false;
         the[_rangeData] = {list: []};
 
@@ -144,6 +145,7 @@ pro[_initSimpleMode] = function () {
         the[_processing] = true;
         options.page--;
         the[_pageChange]();
+        return false;
     });
 
     event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
@@ -154,6 +156,7 @@ pro[_initSimpleMode] = function () {
         the[_processing] = true;
         options.page++;
         the[_pageChange]();
+        return false;
     });
 };
 
@@ -175,6 +178,7 @@ pro[_initRangeMode] = function () {
         the[_processing] = true;
         options.page--;
         the[_pageChange]();
+        return false;
     });
 
     event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
@@ -185,6 +189,7 @@ pro[_initRangeMode] = function () {
         the[_processing] = true;
         options.page++;
         the[_pageChange]();
+        return false;
     });
 
     event.on(the[_containerEl], 'click', '.' + namespace + '-item_number', function () {
@@ -195,6 +200,7 @@ pro[_initRangeMode] = function () {
         the[_processing] = true;
         options.page = Number(attribute.text(this));
         the[_pageChange]();
+        return false;
     });
 };
 
@@ -228,9 +234,9 @@ pro[_pageChange] = function () {
 pro[_processSimple] = function () {
     var the = this;
 
-    the[_containerEl].innerHTML = simpleTpl.render({
+    morph(the[_containerEl], simpleTpl.render({
         options: the[_options]
-    });
+    }));
 };
 
 /**
@@ -316,13 +322,18 @@ pro[_processRange] = function () {
         pushRangeList(1, total);
     }
 
-    the[_containerEl].innerHTML = rangeTpl.render({
+    morph(the[_containerEl], rangeTpl.render({
         list: rangeList,
         options: options
-    });
+    }));
 };
 
 
 require('./style.css', 'css|style');
 Pagination.defaults = defaults;
 module.exports = Pagination;
+
+
+function morph(el, html) {
+    el.innerHTML = html;
+}
