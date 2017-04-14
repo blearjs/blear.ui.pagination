@@ -12,23 +12,36 @@ var Pagination = require('../src/index');
 new Pagination({
     el: '#simple',
     mode: 'simple',
-    total: 20,
+    total: 7,
     page: 3
-}).on('change', function (page, calback) {
-    calback({
-        page: page
-    });
 });
 
-// new Pagination({
-//     el: '#range',
-//     mode: 'range',
-//     total: 20,
-//     page: 3
-// }).on('change', function (page, calback) {
-//     calback({
-//         page: page
-//     });
-// });
+new Pagination({
+    el: '#range-1',
+    mode: 'range',
+    total: 3,
+    page: 3
+});
+
+new Pagination({
+    el: '#range-2',
+    mode: 'range',
+    total: 7,
+    page: 3
+});
+
+new Pagination({
+    el: '#range-3',
+    mode: 'range',
+    total: 9,
+    page: 3
+});
+
+new Pagination({
+    el: '#range-4',
+    mode: 'range',
+    total: 15,
+    page: 3
+});
 
 

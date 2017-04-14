@@ -1,90 +1,93 @@
 <div class="blearui-pagination">
     <div class="blearui-pagination-item blearui-pagination-item_prev"
-         @class="blearui-pagination-item_disabled: options.page == 1"
+         :class="{blearui-pagination-item_disabled: options.page == 1}"
          @click="onPrev">{{options.prev}}</div>
 
 <!--总数 <= 范围-->
-{{#if options.total <= options.range}}
-{{#for item in range(1, options.total)}}
     <div class="blearui-pagination-item"
-         @class="blearui-pagination-item_active: options.page == item" @click="onPage(item)">{{item}}</div>
-{{/for}}
+         @for="item in list"
+         :class="{
+            blearui-pagination-item_active: options.page == item.text,
+            blearui-pagination-item_ellipsis: item.type == 1,
+            blearui-pagination-item_number: item.type == 2
+         }"
+         @click="onPage(item)">{{item.text}}</div>
 
 <!--总数 > 范围-->
-{{#else}}
-    {{#set rangeSlice = Math.floor(options.range / 3)}}
-    {{#set rangeSliceRemainLength = options.range - rangeSlice * 2 - 1}}
-    {{#set rangeSliceLeftLength = Math.floor(rangeSliceRemainLength / 2)}}
-    {{#set rangeSliceRightLength = rangeSliceRemainLength - rangeSliceLeftLength}}
+<!--{{#else}}-->
+    <!--{{#set rangeSlice = Math.floor(options.range / 3)}}-->
+    <!--{{#set rangeSliceRemainLength = options.range - rangeSlice * 2 - 1}}-->
+    <!--{{#set rangeSliceLeftLength = Math.floor(rangeSliceRemainLength / 2)}}-->
+    <!--{{#set rangeSliceRightLength = rangeSliceRemainLength - rangeSliceLeftLength}}-->
 
-    {{#set rangeLeftMax = rangeSlice + 2}}
-    {{#set rangeRightMin = options.total - rangeSlice - 1}}
-    {{#set rangeLeftMax = Math.min(rangeLeftMax, rangeRightMin)}}
-    {{#set rangeCurrentLeftMin = rangeLeftMax + rangeSliceLeftLength}}
-    {{#set rangeCurrentRightMax = rangeRightMin - rangeSliceRightLength}}
+    <!--{{#set rangeLeftMax = rangeSlice + 2}}-->
+    <!--{{#set rangeRightMin = options.total - rangeSlice - 1}}-->
+    <!--{{#set rangeLeftMax = Math.min(rangeLeftMax, rangeRightMin)}}-->
+    <!--{{#set rangeCurrentLeftMin = rangeLeftMax + rangeSliceLeftLength}}-->
+    <!--{{#set rangeCurrentRightMax = rangeRightMin - rangeSliceRightLength}}-->
 
-    {{#if options.page < rangeCurrentLeftMin || options.page > rangeCurrentRightMax}}
-        <!--1 ... [8] 9 10-->
-        {{#set normalLength = Math.floor(options.range / 2) }}
-        {{#set currentLength = options.range - normalLength }}
+    <!--{{#if options.page < rangeCurrentLeftMin || options.page > rangeCurrentRightMax}}-->
+        <!--&lt;!&ndash;1 ... [8] 9 10&ndash;&gt;-->
+        <!--{{#set normalLength = Math.floor(options.range / 2) }}-->
+        <!--{{#set currentLength = options.range - normalLength }}-->
 
-        {{#set alignLeft = options.page <= rangeLeftMax}}
-        {{#set alignCenter = options.page < rangeLeftMax}}
-        {{#set rangeLeftMax = alignLeft ? currentLength : normalLength}}
-        {{#set rangeRightMin = options.total - (alignLeft ? normalLength : currentLength) + 1}}
+        <!--{{#set alignLeft = options.page <= rangeLeftMax}}-->
+        <!--{{#set alignCenter = options.page < rangeLeftMax}}-->
+        <!--{{#set rangeLeftMax = alignLeft ? currentLength : normalLength}}-->
+        <!--{{#set rangeRightMin = options.total - (alignLeft ? normalLength : currentLength) + 1}}-->
 
-        <!--左右互补-->
-        {{#if options.page > rangeLeftMax && options.page < rangeRightMin}}
-            {{#set deltaLength = alignLeft ? options.page - rangeLeftMax : rangeRightMin - options.page}}
+        <!--&lt;!&ndash;左右互补&ndash;&gt;-->
+        <!--{{#if options.page > rangeLeftMax && options.page < rangeRightMin}}-->
+            <!--{{#set deltaLength = alignLeft ? options.page - rangeLeftMax : rangeRightMin - options.page}}-->
 
-            {{#if alignLeft}}
-                {{#set rangeLeftMax += deltaLength}}
-                {{#set rangeRightMin += deltaLength}}
-            {{#else}}
-                {{#set rangeLeftMax -= deltaLength}}
-                {{#set rangeRightMin -= deltaLength}}
-            {{/if}}
-        {{/if}}
+            <!--{{#if alignLeft}}-->
+                <!--{{#set rangeLeftMax += deltaLength}}-->
+                <!--{{#set rangeRightMin += deltaLength}}-->
+            <!--{{#else}}-->
+                <!--{{#set rangeLeftMax -= deltaLength}}-->
+                <!--{{#set rangeRightMin -= deltaLength}}-->
+            <!--{{/if}}-->
+        <!--{{/if}}-->
 
-        {{#for item in range(1, rangeLeftMax)}}
-        <div class="blearui-pagination-item"
-             @class="blearui-pagination-item_active: item == options.page"
-             @click="onPage(item)">{{item}}</div>
-        {{/for}}
+        <!--{{#for item in range(1, rangeLeftMax)}}-->
+        <!--<div class="blearui-pagination-item"-->
+             <!--@class="blearui-pagination-item_active: item == options.page"-->
+             <!--@click="onPage(item)">{{item}}</div>-->
+        <!--{{/for}}-->
 
-        <div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>
+        <!--<div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>-->
 
-        {{#for item in range(rangeRightMin, options.total)}}
-        <div class="blearui-pagination-item"
-             @class="blearui-pagination-item_active: item == options.page"
-             @click="onPage(item)">{{item}}</div>
-        {{/for}}
+        <!--{{#for item in range(rangeRightMin, options.total)}}-->
+        <!--<div class="blearui-pagination-item"-->
+             <!--@class="blearui-pagination-item_active: item == options.page"-->
+             <!--@click="onPage(item)">{{item}}</div>-->
+        <!--{{/for}}-->
 
-    {{#else}}
-        {{#for item in range(1, rangeSlice)}}
-            <div class="blearui-pagination-item" @click="onPage(item)">{{item}}</div>
-        {{/for}}
+    <!--{{#else}}-->
+        <!--{{#for item in range(1, rangeSlice)}}-->
+            <!--<div class="blearui-pagination-item" @click="onPage(item)">{{item}}</div>-->
+        <!--{{/for}}-->
 
-        <div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>
+        <!--<div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>-->
 
-        {{#set centerMin = options.page - rangeSliceLeftLength}}
-        {{#set centerMax = options.page + rangeSliceRightLength}}
-        {{#for item in range(centerMin, centerMax)}}
-            <div class="blearui-pagination-item"
-                 @class="blearui-pagination-item_active: item == options.page"
-                 @click="onPage(item)">{{item}}</div>
-        {{/for}}
+        <!--{{#set centerMin = options.page - rangeSliceLeftLength}}-->
+        <!--{{#set centerMax = options.page + rangeSliceRightLength}}-->
+        <!--{{#for item in range(centerMin, centerMax)}}-->
+            <!--<div class="blearui-pagination-item"-->
+                 <!--@class="blearui-pagination-item_active: item == options.page"-->
+                 <!--@click="onPage(item)">{{item}}</div>-->
+        <!--{{/for}}-->
 
-        <div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>
+        <!--<div class="blearui-pagination-item blearui-pagination-item_ellipsis">{{options.ellipsis}}</div>-->
 
-        {{#for item in range(options.total - rangeSlice + 1, options.total)}}
-            <div class="blearui-pagination-item" @click="onPage(item)">{{item}}</div>
-        {{/for}}
+        <!--{{#for item in range(options.total - rangeSlice + 1, options.total)}}-->
+            <!--<div class="blearui-pagination-item" @click="onPage(item)">{{item}}</div>-->
+        <!--{{/for}}-->
 
-    {{/if}}
-{{/if}}
+    <!--{{/if}}-->
+<!--{{/if}}-->
 
     <div class="blearui-pagination-item blearui-pagination-item_next"
-         @class="blearui-pagination-item_disabled: options.page == options.total"
+         :class="{blearui-pagination-item_disabled: options.page == options.total}"
          @click="onNext">{{options.next}}</div>
 </div>
