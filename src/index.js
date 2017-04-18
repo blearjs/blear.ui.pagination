@@ -111,6 +111,34 @@ var Pagination = UI.extend({
         time.nextTick(function () {
             the[_pageChange]();
         });
+    },
+
+    /**
+     * 改变页码
+     * @param page
+     * @returns {Pagination}
+     */
+    change: function (page) {
+        var the = this;
+
+        if (the[_processing]) {
+            return the;
+        }
+
+        the[_processing] = true;
+        the[_options].page = page;
+        the[_pageChange]();
+        return the;
+    },
+
+    /**
+     * 销毁实例
+     */
+    destroy: function () {
+        var the = this;
+
+        event.un(the[_containerEl]);
+        Pagination.invoke('destroy', the);
     }
 });
 var pro = Pagination.prototype;
