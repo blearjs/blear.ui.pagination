@@ -32,7 +32,7 @@ var defaults = {
     el: null,
 
     /**
-     * 分页模式
+     * 分页模式，有 simple/range 两种
      * @type String
      */
     mode: 'simple',
@@ -173,7 +173,6 @@ pro[_initSimpleMode] = function () {
         the[_processing] = true;
         options.page--;
         the[_pageChange]();
-        return false;
     });
 
     event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
@@ -184,7 +183,6 @@ pro[_initSimpleMode] = function () {
         the[_processing] = true;
         options.page++;
         the[_pageChange]();
-        return false;
     });
 };
 
@@ -206,7 +204,6 @@ pro[_initRangeMode] = function () {
         the[_processing] = true;
         options.page--;
         the[_pageChange]();
-        return false;
     });
 
     event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
@@ -217,7 +214,6 @@ pro[_initRangeMode] = function () {
         the[_processing] = true;
         options.page++;
         the[_pageChange]();
-        return false;
     });
 
     event.on(the[_containerEl], 'click', '.' + namespace + '-item_number', function () {
@@ -225,10 +221,15 @@ pro[_initRangeMode] = function () {
             return;
         }
 
+        var clickPage = Number(attribute.text(this));
+
+        if (clickPage === options.page) {
+            return;
+        }
+
         the[_processing] = true;
-        options.page = Number(attribute.text(this));
+        options.page = clickPage;
         the[_pageChange]();
-        return false;
     });
 };
 
