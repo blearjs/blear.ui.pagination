@@ -132,6 +132,28 @@ var Pagination = UI.extend({
     },
 
     /**
+     * 渲染分页器
+     * @param [configs]
+     * @param [configs.page] {Number} 当前页码
+     * @param [configs.total] {Number} 总页数
+     * @returns {Pagination}
+     */
+    render: function (configs) {
+        var the = this;
+        var options = the[_options];
+
+        object.assign(options, object.filter(configs || {}, ['page', 'total']));
+
+        if (options.mode === 'range') {
+            the[_processRange]();
+        } else {
+            the[_processSimple]();
+        }
+
+        return the;
+    },
+
+    /**
      * 销毁实例
      */
     destroy: function () {
@@ -147,9 +169,7 @@ var _options = sole();
 var _rangeData = sole();
 var _containerEl = sole();
 var _initSimpleMode = sole();
-var _simpleVM = sole();
 var _initRangeMode = sole();
-var _rangeVM = sole();
 var _processing = sole();
 var _pageChange = sole();
 var _processSimple = sole();
@@ -241,15 +261,8 @@ pro[_pageChange] = function () {
     var the = this;
     var options = the[_options];
 
-    options.onChange(options.page, function next(_options) {
-        object.assign(options, object.filter(_options || {}, ['page', 'total']));
-
-        if (options.mode === 'range') {
-            the[_processRange]();
-        } else {
-            the[_processSimple]();
-        }
-
+    options.onChange(options.page, function next(configs) {
+        the.render(configs);
         the[_processing] = false;
     });
 
