@@ -1,5 +1,6 @@
 <div class="blearui-pagination">
     <div class="blearui-pagination-item blearui-pagination-item_prev"
+         @if="options.prev"
          @class="blearui-pagination-item_disabled: options.page == 1">{{options.prev}}</div>
 
     <div class="blearui-pagination-item"
@@ -11,5 +12,6 @@
          ">{{item.text}}</div>
 
     <div class="blearui-pagination-item blearui-pagination-item_next"
+         @if="options.next"
          @class="blearui-pagination-item_disabled: options.page == options.total">{{options.next}}</div>
 </div>

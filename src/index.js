@@ -346,10 +346,15 @@ pro[_processRange] = function () {
                 }
             }
 
+            // 当前页在左边右边界
             if (rangeLeftMax === page) {
                 rangeLeftMax++;
-            } else if (rangeRightMin === page) {
+                rangeRightMin++;
+            }
+            // 当前页在右边左边界
+            else if (rangeRightMin === page) {
                 rangeRightMin--;
+                rangeLeftMax--;
             }
 
             pushRangeList(1, rangeLeftMax);

@@ -42,6 +42,8 @@ new Pagination({
     mode: 'range',
     total: 15,
     page: 3,
+    prev: null,
+    next: null,
     onPage: function (page, next) {
         setTimeout(function () {
             next({
