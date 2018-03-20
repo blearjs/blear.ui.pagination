@@ -346,6 +346,12 @@ pro[_processRange] = function () {
                 }
             }
 
+            if (rangeLeftMax === page) {
+                rangeLeftMax++;
+            } else if (rangeRightMin === page) {
+                rangeRightMin--;
+            }
+
             pushRangeList(1, rangeLeftMax);
             pushRangeList(ellipsis);
             pushRangeList(rangeRightMin, total);
