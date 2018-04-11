@@ -123,7 +123,6 @@ var Pagination = UI.extend({
 
         the[_processing] = true;
         the[_options].page = page;
-        the[_pageChange]();
         return the;
     },
 
