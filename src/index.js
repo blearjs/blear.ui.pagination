@@ -107,10 +107,6 @@ var Pagination = UI.extend({
                 the[_initSimpleMode]();
                 break;
         }
-
-        time.nextTick(function () {
-            the[_pageChange]();
-        });
     },
 
     /**
