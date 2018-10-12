@@ -46,7 +46,7 @@
   },
   "peerDependencies": {},
   "devDependencies": {
-    "coolie.js": "^2.1.7"
+    "coolie.js": "^2.4.1"
   },
   "license": "MIT"
 }

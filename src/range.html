@@ -13,10 +13,10 @@
     blearui-pagination-item
     {{options.page == item.text ? 'blearui-pagination-item_active' : ''}}
     {{item.type == 1 ? 'blearui-pagination-item_ellipsis' : ''}}
-    {{item.type == 2 ? 'item_number' : ''}}
+    {{item.type == 2 ? 'blearui-pagination-item_number' : ''}}
     ">{{item.text}}
     </div>
-    {{/if}}
+    {{/for}}
 
     {{#if options.next}}
     <div class="
