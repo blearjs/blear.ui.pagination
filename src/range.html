@@ -1,17 +1,29 @@
 <div class="blearui-pagination">
-    <div class="blearui-pagination-item blearui-pagination-item_prev"
-         @if="options.prev"
-         @class="blearui-pagination-item_disabled: options.page == 1">{{options.prev}}</div>
+    {{#if options.prev}}
+    <div class="
+    blearui-pagination-item
+    blearui-pagination-item_prev
+    {{options.page == 1 ? 'blearui-pagination-item_disabled' : ''}}
+    ">{{options.prev}}
+    </div>
+    {{/if}}
 
-    <div class="blearui-pagination-item"
-         @for="item in list"
-         @class="
-            blearui-pagination-item_active: options.page == item.text,
-            blearui-pagination-item_ellipsis: item.type == 1,
-            blearui-pagination-item_number: item.type == 2
-         ">{{item.text}}</div>
+    {{#for item in list}}
+    <div class="
+    blearui-pagination-item
+    {{options.page == item.text ? 'blearui-pagination-item_active' : ''}}
+    {{item.type == 1 ? 'blearui-pagination-item_ellipsis' : ''}}
+    {{item.type == 2 ? 'item_number' : ''}}
+    ">{{item.text}}
+    </div>
+    {{/if}}
 
-    <div class="blearui-pagination-item blearui-pagination-item_next"
-         @if="options.next"
-         @class="blearui-pagination-item_disabled: options.page == options.total">{{options.next}}</div>
+    {{#if options.next}}
+    <div class="
+    blearui-pagination-item
+    blearui-pagination-item_next
+    {{options.page == options.total ? 'blearui-pagination-item_disabled' : ''}}
+    ">{{options.next}}
+    </div>
+    {{/if}}
 </div>
