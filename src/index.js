@@ -74,12 +74,13 @@ var defaults = {
     ellipsis: '...',
 
     /**
-     * 页面改变之后处理
+     * 页码改变之后处理
      * @param page {Number} 分页值
      * @param next {Function} 处理完回调
      */
     onChange: function (page, next) {
-        next();
+        // 可以修改当前页码及总页
+        next(/*{page, total}*/);
     }
 };
 var Pagination = UI.extend({
