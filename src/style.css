@@ -18,7 +18,8 @@
       text-align: center;
       border-radius: 4px;
       color: #5d5d5d;
-      border: 1px solid #d9d9d9; }
+      border: 1px solid #d9d9d9;
+      cursor: pointer; }
       .blearui-pagination-item a:hover {
         color: #1890ff;
         border-color: #1890ff; }
@@ -28,6 +29,14 @@
         color: #5d5d5d;
         border-color: #d9d9d9;
         cursor: default; }
+    .blearui-pagination-item_ellipsis a, .blearui-pagination-item_ellipsis a:hover, .blearui-pagination-item_ellipsis a:active {
+      color: #c6c6c6;
+      border-width: 0;
+      cursor: default; }
+    .blearui-pagination-item_active a, .blearui-pagination-item_active a:hover, .blearui-pagination-item_active a:active {
+      color: #1890ff;
+      border-color: #1890ff;
+      cursor: default; }
     .blearui-pagination-item_disabled a, .blearui-pagination-item_disabled a:hover, .blearui-pagination-item_disabled a:active {
       color: #c6c6c6;
       border-color: #d9d9d9;

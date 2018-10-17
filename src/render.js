@@ -52,7 +52,7 @@ var defaults = {
      * 省略页文本
      * @type String
      */
-    ellipsis: '...'
+    ellipsis: '•••'
 };
 var parsers = {
     simple: require('./parsers/simple'),

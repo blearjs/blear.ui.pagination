@@ -1,29 +1,33 @@
-<div class="blearui-pagination">
-    {{#if options.prev}}
-    <div class="
-    blearui-pagination-item
-    blearui-pagination-item_prev
-    {{options.page == 1 ? 'blearui-pagination-item_disabled' : ''}}
-    ">{{options.prev}}
-    </div>
-    {{/if}}
+<nav aria-label="Page navigation">
+    <ul class="blearui-pagination">
+        {{#if options.prev}}
+        <li class="
+            blearui-pagination-item
+            blearui-pagination-item_prev
+            {{options.page == 1 ? 'blearui-pagination-item_disabled' : ''}}
+            ">
+            <a aria-label="Previous">{{options.prev}}</a>
+        </li>
+        {{/if}}
 
-    {{#for item in list}}
-    <div class="
-    blearui-pagination-item
-    {{options.page == item.text ? 'blearui-pagination-item_active' : ''}}
-    {{item.type == 1 ? 'blearui-pagination-item_ellipsis' : ''}}
-    {{item.type == 2 ? 'blearui-pagination-item_number' : ''}}
-    ">{{item.text}}
-    </div>
-    {{/for}}
+        {{#for item in list}}
+        <li class="
+            blearui-pagination-item
+            {{options.page == item.text ? 'blearui-pagination-item_active' : ''}}
+            {{item.type == 1 ? 'blearui-pagination-item_ellipsis' : ''}}
+            {{item.type == 2 ? 'blearui-pagination-item_number' : ''}}
+            "><a>{{item.text}}</a>
+        </li>
+        {{/for}}
 
-    {{#if options.next}}
-    <div class="
-    blearui-pagination-item
-    blearui-pagination-item_next
-    {{options.page == options.total ? 'blearui-pagination-item_disabled' : ''}}
-    ">{{options.next}}
-    </div>
-    {{/if}}
-</div>
+        {{#if options.next}}
+        <li class="
+            blearui-pagination-item
+            blearui-pagination-item_next
+            {{options.page == options.total ? 'blearui-pagination-item_disabled' : ''}}
+            ">
+            <a aria-label="Next">{{options.next}}</a>
+        </li>
+        {{/if}}
+    </ul>
+</nav>

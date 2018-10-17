@@ -36,6 +36,7 @@ $disabled-color: #c6c6c6;
       border-radius: 4px;
       color: $text-color;
       border: 1px solid $border-color;
+      cursor: pointer;
 
       &:hover {
         color: $active-color;
@@ -58,9 +59,27 @@ $disabled-color: #c6c6c6;
     }
 
     &_ellipsis {
+      a {
+        &,
+        &:hover,
+        &:active {
+          color: $disabled-color;
+          border-width: 0;
+          cursor: default;
+        }
+      }
     }
 
     &_active {
+      a {
+        &,
+        &:hover,
+        &:active {
+          color: $active-color;
+          border-color: $active-color;
+          cursor: default;
+        }
+      }
     }
 
     &_disabled {
