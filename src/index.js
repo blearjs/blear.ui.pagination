@@ -2,9 +2,8 @@
  * 分页器
  * @author ydr.me
  * @create 2016-05-09 17:55
+ * @update 2018年10月17日14:49:34
  */
-
-
 
 
 'use strict';
