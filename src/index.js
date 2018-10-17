@@ -11,17 +11,12 @@
 
 var UI = require('blear.ui');
 var object = require('blear.utils.object');
-var Template = require('blear.classes.template');
 var selector = require('blear.core.selector');
 var event = require('blear.core.event');
 var attribute = require('blear.core.attribute');
 
 var render = require('./render');
-var simpleTemplate = require('./simple.html');
-var rangeTemplate = require('./range.html');
 
-var simpleTpl = new Template(simpleTemplate);
-var rangeTpl = new Template(rangeTemplate);
 var namespace = 'blearui-pagination';
 var defaults = object.assign({}, render.defaults, {
     /**
