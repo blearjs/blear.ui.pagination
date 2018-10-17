@@ -4,12 +4,10 @@ $border-color: #d9d9d9;
 $disabled-color: #c6c6c6;
 
 .blearui-pagination {
-  display: inline-block;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  text-align: center;
 
   &-list {
+    display: inline-block;
     list-style: none;
     padding: 0;
     margin: 0;

@@ -1,9 +1,7 @@
 .blearui-pagination {
-  display: inline-block;
-  list-style: none;
-  padding: 0;
-  margin: 0; }
+  text-align: center; }
   .blearui-pagination-list {
+    display: inline-block;
     list-style: none;
     padding: 0;
     margin: 0; }
