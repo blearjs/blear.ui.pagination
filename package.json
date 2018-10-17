@@ -35,7 +35,7 @@
     "url": "https://github.com/blearjs/blear.ui.pagination/issues"
   },
   "dependencies": {
-    "blear.classes.template": "^2.1.2",
+    "blear.classes.template": "^2.2.0",
     "blear.core.attribute": "^1.0.11",
     "blear.core.event": "^1.0.5",
     "blear.core.selector": "1.x",

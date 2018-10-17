@@ -52,7 +52,13 @@ var defaults = {
      * 省略页文本
      * @type String
      */
-    ellipsis: '•••'
+    ellipsis: '•••',
+
+    /**
+     * 分页 URL 格式，使用 `%#%` 来表示分页页码
+     * @type string
+     */
+    format: '?page=%#%'
 };
 var parsers = {
     simple: require('./parsers/simple'),
@@ -80,7 +86,13 @@ module.exports = function (options, tpl) {
     }
 
     tpl = tpl || tpls[mode];
+    tpl.filter('page', function (page) {
+        if (page < 1 || page > options.total) {
+            return 'javascript:;';
+        }
 
+        return options.format.replace(/%#%/g, page);
+    });
     return tpl.render(parser(options));
 };
 module.exports.defaults = defaults;

@@ -20,6 +20,8 @@ module.exports = function (options) {
     var page = options.page;
     var ellipsis = options.ellipsis;
     var canRange = total > range;
+    // type=1 => ellipsis
+    // type=2 => number
     var rangeList = [];
     var pushRangeList = function (start, end) {
         var list;
@@ -33,7 +35,8 @@ module.exports = function (options) {
             list = array.range(start, end).map(function (item) {
                 return {
                     type: 2,
-                    text: item
+                    text: item,
+                    page: item
                 };
             });
         }

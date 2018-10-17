@@ -5,7 +5,7 @@
             blearui-pagination-item_prev
             {{options.page == 1 ? 'blearui-pagination-item_disabled' : ''}}
             ">
-            <a aria-label="Previous">{{options.prev}}</a>
+            <a aria-label="Previous" href="{{= options.page - 1 | page}}">{{options.prev}}</a>
         </li>
 
         <li class="
@@ -19,7 +19,7 @@
             blearui-pagination-item_next
             {{options.page == options.total ? 'blearui-pagination-item_disabled' : ''}}
             ">
-            <a aria-label="Next">{{options.next}}</a>
+            <a aria-label="Next" href="{{= options.page + 1 | page}}">{{options.next}}</a>
         </li>
     </ul>
 </nav>

@@ -6,7 +6,7 @@
             blearui-pagination-item_prev
             {{options.page == 1 ? 'blearui-pagination-item_disabled' : ''}}
             ">
-            <a aria-label="Previous">{{options.prev}}</a>
+            <a aria-label="Previous" href="{{= options.page - 1 | page}}">{{options.prev}}</a>
         </li>
         {{/if}}
 
@@ -16,7 +16,7 @@
             {{options.page == item.text ? 'blearui-pagination-item_active' : ''}}
             {{item.type == 1 ? 'blearui-pagination-item_ellipsis' : ''}}
             {{item.type == 2 ? 'blearui-pagination-item_number' : ''}}
-            "><a>{{item.text}}</a>
+            "><a href="{{= item.page | page}}">{{item.text}}</a>
         </li>
         {{/for}}
 
@@ -26,7 +26,7 @@
             blearui-pagination-item_next
             {{options.page == options.total ? 'blearui-pagination-item_disabled' : ''}}
             ">
-            <a aria-label="Next">{{options.next}}</a>
+            <a aria-label="Next" href="{{= options.page + 1 | page}}">{{options.next}}</a>
         </li>
         {{/if}}
     </ul>

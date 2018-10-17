@@ -126,7 +126,9 @@ pro[_initSimpleMode] = function () {
 
     the[_processRender]();
 
-    event.on(the[_containerEl], 'click', '.' + namespace + '-item_prev', function () {
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_prev', function (ev) {
+        ev.preventDefault();
+
         if (the[_processing] || options.page <= 1) {
             return;
         }
@@ -136,7 +138,9 @@ pro[_initSimpleMode] = function () {
         the[_pageChange]();
     });
 
-    event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function (ev) {
+        ev.preventDefault();
+
         if (the[_processing] || options.page >= options.total) {
             return;
         }
@@ -157,7 +161,9 @@ pro[_initRangeMode] = function () {
 
     the[_processRender]();
 
-    event.on(the[_containerEl], 'click', '.' + namespace + '-item_prev', function () {
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_prev', function (ev) {
+        ev.preventDefault();
+
         if (the[_processing] || options.page <= 1) {
             return;
         }
@@ -167,7 +173,9 @@ pro[_initRangeMode] = function () {
         the[_pageChange]();
     });
 
-    event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function () {
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_next', function (ev) {
+        ev.preventDefault();
+
         if (the[_processing] || options.page >= options.total) {
             return;
         }
@@ -177,7 +185,9 @@ pro[_initRangeMode] = function () {
         the[_pageChange]();
     });
 
-    event.on(the[_containerEl], 'click', '.' + namespace + '-item_number', function () {
+    event.on(the[_containerEl], 'click', '.' + namespace + '-item_number', function (ev) {
+        ev.preventDefault();
+
         if (the[_processing]) {
             return;
         }
