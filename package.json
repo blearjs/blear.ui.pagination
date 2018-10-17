@@ -42,7 +42,7 @@
     "blear.ui": "1.x",
     "blear.utils.array": "1.x",
     "blear.utils.object": "1.x",
-    "blear.utils.time": "1.x"
+    "blear.utils.typeis": "^1.0.3"
   },
   "peerDependencies": {},
   "devDependencies": {
