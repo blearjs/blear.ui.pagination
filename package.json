@@ -1,7 +1,7 @@
 {
   "name": "blear.ui.pagination",
-  "version": "2.3.0",
-  "description": "分页器 UI",
+  "version": "2.3.1",
+  "description": "分页器 UI，也可用于 Node 端渲染",
   "scripts": {
     "live": "browser-sync start --config bs-config.js"
   },
