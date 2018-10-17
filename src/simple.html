@@ -1,17 +1,25 @@
-<div class="blearui-pagination">
-    <div class="
-    blearui-pagination-item
-    blearui-pagination-item_prev
-    {{options.page == 1 ? 'blearui-pagination-item_disabled' : ''}}
-    ">{{options.prev}}
-    </div>
+<nav aria-label="Page navigation">
+    <ul class="blearui-pagination blearui-pagination_simple">
+        <li class="
+            blearui-pagination-item
+            blearui-pagination-item_prev
+            {{options.page == 1 ? 'blearui-pagination-item_disabled' : ''}}
+            ">
+            <a href="javascript:;" aria-label="Previous">{{options.prev}}</a>
+        </li>
 
-    <div class="blearui-pagination-item blearui-pagination-item_label">{{options.page}}/{{options.total}}</div>
+        <li class="
+            blearui-pagination-item
+            blearui-pagination-item_label
+            "><a>{{options.page}}/{{options.total}}</a>
+        </li>
 
-    <div class="
-    blearui-pagination-item
-    blearui-pagination-item_next
-    {{options.page == options.total ? 'blearui-pagination-item_disabled' : ''}}
-    ">{{options.next}}
-    </div>
-</div>
+        <li class="
+            blearui-pagination-item
+            blearui-pagination-item_next
+            {{options.page == options.total ? 'blearui-pagination-item_disabled' : ''}}
+            ">
+            <a href="javascript:;" aria-label="Next">{{options.next}}</a>
+        </li>
+    </ul>
+</nav>
