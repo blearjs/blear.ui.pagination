@@ -103,6 +103,7 @@ var Pagination = UI.extend({
         var the = this;
 
         event.un(the[_containerEl]);
+        the[_paginationClass].destroy();
         Pagination.invoke('destroy', the);
     }
 });
