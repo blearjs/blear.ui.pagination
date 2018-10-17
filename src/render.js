@@ -9,7 +9,6 @@
 'use strict';
 
 var Template = require('blear.classes.template');
-var typeis = require('blear.utils.typeis');
 var object = require('blear.utils.object');
 
 var defaults = {
@@ -60,8 +59,8 @@ var parsers = {
     range: require('./parsers/range')
 };
 var tpls = {
-    simple: new Template(require('./simple.html')),
-    range: new Template(require('./range.html'))
+    simple: new Template(require('./templates/simple.html')),
+    range: new Template(require('./templates/range.html'))
 };
 
 /**
