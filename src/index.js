@@ -13,11 +13,10 @@ var object = require('blear.utils.object');
 var selector = require('blear.core.selector');
 var event = require('blear.core.event');
 var attribute = require('blear.core.attribute');
-
-var render = require('./render');
+var PaginationClass = require('blear.classes.pagination');
 
 var namespace = 'blearui-pagination';
-var defaults = object.assign({}, render.defaults, {
+var defaults = object.assign({}, PaginationClass.defaults, {
     /**
      * 容器，如果容器不为空，则以容器的 html 作为分页模板
      * @type String|HTMLElement
@@ -41,6 +40,8 @@ var Pagination = UI.extend({
 
         Pagination.parent(the);
         options = the[_options] = object.assign(true, {}, defaults, options);
+        options.namespace = namespace;
+        the[_paginationClass] = new PaginationClass(options);
         the[_containerEl] = selector.query(options.el)[0];
         // var divEl = modification.create('div');
         // modification.insert(divEl, the[_containerEl]);
@@ -108,6 +109,7 @@ var Pagination = UI.extend({
 var pro = Pagination.prototype;
 var sole = Pagination.sole;
 var _options = sole();
+var _paginationClass = sole();
 var _rangeData = sole();
 var _containerEl = sole();
 var _initSimpleMode = sole();
@@ -227,7 +229,7 @@ pro[_pageChange] = function () {
 pro[_processRender] = function () {
     var the = this;
 
-    morph(the[_containerEl], render(the[_options]));
+    morph(the[_containerEl], the[_paginationClass].render(the[_options]));
 };
 
 

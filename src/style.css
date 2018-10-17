@@ -3,10 +3,14 @@
   list-style: none;
   padding: 0;
   margin: 0; }
-  .blearui-pagination:after {
-    content: '';
-    display: block;
-    clear: both; }
+  .blearui-pagination-list {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+    .blearui-pagination-list:after {
+      content: '';
+      display: block;
+      clear: both; }
   .blearui-pagination-item {
     float: left;
     margin-left: 8px; }

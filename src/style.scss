@@ -9,10 +9,16 @@ $disabled-color: #c6c6c6;
   padding: 0;
   margin: 0;
 
-  &:after {
-    content: '';
-    display: block;
-    clear: both;
+  &-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
   }
 
   &-simple {
