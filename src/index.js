@@ -116,7 +116,6 @@ var _initRangeMode = sole();
 var _processing = sole();
 var _pageChange = sole();
 var _processRender = sole();
-var _processRange = sole();
 
 
 /**
