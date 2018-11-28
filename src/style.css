@@ -22,24 +22,29 @@
       color: #5d5d5d;
       border: 1px solid #d9d9d9;
       cursor: pointer; }
-      .blearui-pagination-item a:hover {
+      .blearui-pagination-item a:hover, .blearui-pagination-item a:active {
         color: #1890ff;
-        border-color: #1890ff; }
+        border-color: #1890ff;
+        text-decoration: none; }
     .blearui-pagination-item_label {
       min-width: 60px; }
       .blearui-pagination-item_label a, .blearui-pagination-item_label a:hover, .blearui-pagination-item_label a:active {
         color: #5d5d5d;
         border-color: #d9d9d9;
-        cursor: default; }
+        cursor: default;
+        pointer-events: none; }
     .blearui-pagination-item_ellipsis a, .blearui-pagination-item_ellipsis a:hover, .blearui-pagination-item_ellipsis a:active {
       color: #c6c6c6;
       border-width: 0;
-      cursor: default; }
+      cursor: default;
+      pointer-events: none; }
     .blearui-pagination-item_active a, .blearui-pagination-item_active a:hover, .blearui-pagination-item_active a:active {
       color: #1890ff;
       border-color: #1890ff;
-      cursor: default; }
+      cursor: default;
+      pointer-events: none; }
     .blearui-pagination-item_disabled a, .blearui-pagination-item_disabled a:hover, .blearui-pagination-item_disabled a:active {
       color: #c6c6c6;
       border-color: #d9d9d9;
-      cursor: not-allowed; }
+      cursor: not-allowed;
+      pointer-events: none; }

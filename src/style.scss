@@ -42,9 +42,11 @@ $disabled-color: #c6c6c6;
       border: 1px solid $border-color;
       cursor: pointer;
 
-      &:hover {
+      &:hover,
+      &:active {
         color: $active-color;
         border-color: $active-color;
+        text-decoration: none;
       }
     }
 
@@ -58,6 +60,7 @@ $disabled-color: #c6c6c6;
           color: $text-color;
           border-color: $border-color;
           cursor: default;
+          pointer-events: none;
         }
       }
     }
@@ -70,6 +73,7 @@ $disabled-color: #c6c6c6;
           color: $disabled-color;
           border-width: 0;
           cursor: default;
+          pointer-events: none;
         }
       }
     }
@@ -82,6 +86,7 @@ $disabled-color: #c6c6c6;
           color: $active-color;
           border-color: $active-color;
           cursor: default;
+          pointer-events: none;
         }
       }
     }
@@ -94,6 +99,7 @@ $disabled-color: #c6c6c6;
           color: $disabled-color;
           border-color: $border-color;
           cursor: not-allowed;
+          pointer-events: none;
         }
       }
     }
